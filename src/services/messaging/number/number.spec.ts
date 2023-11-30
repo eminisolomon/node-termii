@@ -2,7 +2,7 @@ import { Number } from './number'
 import {
   ISendMessageWithNumber,
   ISendMessageWithNumberResponse,
-} from '../../../types'
+} from '../../../interfaces'
 
 const numberInstance = new Number('api-key')
 

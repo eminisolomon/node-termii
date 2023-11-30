@@ -4,7 +4,7 @@ import {
   IFetchCampaignHistoryResponse,
   ISendCampaign,
   ISendCampaignResponse,
-} from '../../../types'
+} from '../../../interfaces'
 import { IAxiosStruct, handleErrors } from '../../../utils'
 
 export class Campaign extends TermiiCore {

@@ -4,7 +4,7 @@ import {
   IFetchCampaignsResponse,
   ISendCampaign,
   ISendCampaignResponse,
-} from '../../../types'
+} from '../../../interfaces'
 
 const campaignInstance = new Campaign('api-key')
 

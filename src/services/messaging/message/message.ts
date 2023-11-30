@@ -6,7 +6,7 @@ import {
   ISendMessage,
   ISendBulkMessage,
   ISendBulkMessageResponse,
-} from '../../../types/message'
+} from '../../../interfaces/message'
 
 /**
  * The Message class extends the TermiiCore class and provides methods for sending messages.

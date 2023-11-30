@@ -5,7 +5,7 @@ import {
   IPhonebookResponse,
   //   IUpdatePhonebook,
   //   IUpdatePhonebookResponse,
-} from '../../../types'
+} from '../../../interfaces'
 import { IAxiosStruct, handleErrors } from '../../../utils'
 
 export class Phonebook extends TermiiCore {

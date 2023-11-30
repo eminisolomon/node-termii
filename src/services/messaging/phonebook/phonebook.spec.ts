@@ -3,7 +3,7 @@ import {
   IFetchPhonebooksResponse,
   IPhonebook,
   IPhonebookResponse,
-} from '../../../types'
+} from '../../../interfaces'
 
 const phonebookInstance = new Phonebook('api-key')
 

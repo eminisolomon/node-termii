@@ -1,5 +1,5 @@
 import { TermiiCore } from '../../../api'
-import { IDeviceTemplate, IDeviceTemplateResponse } from '../../../types'
+import { IDeviceTemplate, IDeviceTemplateResponse } from '../../../interfaces'
 import { IAxiosStruct, handleErrors } from '../../../utils'
 
 export class Template extends TermiiCore {

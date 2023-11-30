@@ -4,7 +4,7 @@ import {
   ICreateContactResponse,
   IDeleteContactResponse,
   IFetchContactsResponse,
-} from '../../../types'
+} from '../../../interfaces'
 import { IAxiosStruct, handleErrors } from '../../../utils'
 
 export class Contact extends TermiiCore {

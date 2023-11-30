@@ -2,7 +2,7 @@ import { TermiiCore } from '../../../api'
 import {
   ISendMessageWithNumber,
   ISendMessageWithNumberResponse,
-} from '../../../types'
+} from '../../../interfaces'
 import { IAxiosStruct, handleErrors } from '../../../utils'
 
 export class Number extends TermiiCore {

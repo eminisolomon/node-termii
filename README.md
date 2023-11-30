@@ -1,6 +1,6 @@
-# Termii Node Client
+# Termii Node Library
 
-![npm (scoped)](https://img.shields.io/npm/v/termii-nodejs-client?color=%23FF7B37&style=flat-square) ![npm](https://img.shields.io/npm/dm/termii-nodejs-client?style=flat-square) ![Twitter Follow](https://img.shields.io/twitter/follow/peoray_?style=social)
+![npm (scoped)](https://img.shields.io/npm/v/termii/node?color=%23FF7B37&style=flat-square) ![npm](https://img.shields.io/npm/dm/termii/node?style=flat-square) ![Twitter Follow](https://img.shields.io/twitter/follow/peoray_?style=social)
 
 Nodejs SDK for [Termii](https://termii.com) messaging platform written in typescript
 
@@ -40,11 +40,11 @@ This SDK can be installed with npm or yarn or pnpm.
 
 ```sh
 # using npm
-npm install termii-nodejs-client
+npm install termii/node
 # using yarn
-yarn install termii-nodejs-client
+yarn install termii/node
 # using pnpm
-pnpm add termii-nodejs-client
+pnpm add termii/node
 ```
 
 ## Usage
@@ -53,9 +53,9 @@ Import and Initialize the library
 
 ```ts
 // use modules
-import { Termii } from 'termii-nodejs-client';
+import { Termii } from 'termii/node';
 // use cjs
-const { Termii } = require('termii-nodejs-client')
+const { Termii } = require('termii/node')
 
 const termii = new Termii('YOUR_API_KEY');
 ```
@@ -79,7 +79,7 @@ A Sender ID is the name or number that identifies the sender of an SMS message.
 
 ```ts
 // import the sender id response interface from the sdk
-import { type ISenderIDResponse } from 'termii-nodejs-client';
+import { type ISenderIDResponse } from 'termii/node';
 
 // returns the first 15 sender ids
 const senderIds = await termii.message.fetchSenderIDs()
@@ -95,7 +95,7 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the request sender id interfaces from the sdk
-import type { IRequestSenderID, IRequestSenderIDResponse } from 'termii-nodejs-client';
+import type { IRequestSenderID, IRequestSenderIDResponse } from 'termii/node';
 
 const payload: IRequestSenderID = {
   sender_id: 'acme',
@@ -117,7 +117,7 @@ This API allows businesses send text messages to their customers across differen
 
 ```ts
 // import the message interfaces from the sdk
-import type { ISendMessage, ISendMessageResponse } from 'termii-nodejs-client';
+import type { ISendMessage, ISendMessageResponse } from 'termii/node';
 
 const payload: ISendMessage = {
   to: "2347880234567",
@@ -142,7 +142,7 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the message interfaces from the sdk
-import type { ISendBulkMessage, ISendBulkMessageResponse } from 'termii-nodejs-client';
+import type { ISendBulkMessage, ISendBulkMessageResponse } from 'termii/node';
 
 const payload: ISendBulkMessage = {
   to: ["23490555546", "23423490126999","23490555546"],
@@ -166,7 +166,7 @@ This allows businesses send messages to customers using Termii's auto-generated 
 
 ```ts
 // import the number interfaces from the sdk
-import type { ISendMessageWithNumber, ISendMessageWithNumberResponse } from 'termii-nodejs-client';
+import type { ISendMessageWithNumber, ISendMessageWithNumberResponse } from 'termii/node';
 
 const payload: ISendMessage = {
   to: "23490555546",
@@ -187,7 +187,7 @@ This helps businesses set a template for the one-time-passwords (pins) sent to t
 
 ```ts
 // import the template interfaces from the sdk
-import type { IDeviceTemplate, IDeviceTemplateResponse } from 'termii-nodejs-client';
+import type { IDeviceTemplate, IDeviceTemplateResponse } from 'termii/node';
 
 const payload: IDeviceTemplate = {
   phone_number: '+1234567890',
@@ -214,7 +214,7 @@ Create, view & manage phonebooks using these APIs. Each phonebook can be identif
 
 ```ts
 // import the phonebook interfaces from the sdk
-import type { IFetchPhonebooksResponse } from 'termii-nodejs-client';
+import type { IFetchPhonebooksResponse } from 'termii/node';
 
 const response = await termii.message.fetchPhonebooks()
 
@@ -229,7 +229,7 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the phonebook interfaces from the sdk
-import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
+import type { IPhonebookResponse, IPhonebook, } from 'termii/node';
 
 const payload: IPhonebook = {
   phonebook_name: 'Test',
@@ -246,7 +246,7 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the phonebook interfaces from the sdk
-import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
+import type { IPhonebookResponse, IPhonebook, } from 'termii/node';
 
 const payload: IPhonebook = {
   phonebook_name: 'Update testTest',
@@ -263,7 +263,7 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the phonebook interfaces from the sdk
-import type { IPhonebookResponse } from 'termii-nodejs-client';
+import type { IPhonebookResponse } from 'termii/node';
 
 const response = await termii.message.deletePhonebook('phonebook_id')
 console.log(response) // IPhonebookResponse
@@ -279,7 +279,7 @@ Contacts API allows you manage (i.e. edit, update, & delete) contacts in your ph
 
 ```ts
 // import the contact interfaces from the sdk
-import type { IFetchContactsResponse } from 'termii-nodejs-client';
+import type { IFetchContactsResponse } from 'termii/node';
 
 const response = await termii.message.fetchContacts('phonebook_id')
 
@@ -294,7 +294,7 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the contact interfaces from the sdk
-import type { ICreateContact, ICreateContactResponse } from 'termii-nodejs-client';
+import type { ICreateContact, ICreateContactResponse } from 'termii/node';
 
 const payload: ICreateContact = {
   phone_number: '8123696237',
@@ -315,7 +315,7 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the contact interfaces from the sdk
-import type { IDeleteContactResponse } from 'termii-nodejs-client';
+import type { IDeleteContactResponse } from 'termii/node';
 
 const response = await termii.message.deleteContact('contact_id')
 console.log(response) // IDeleteContactResponse
@@ -331,7 +331,7 @@ Using the campaign APIs, you can view, manage and send a campaign to a phonebook
 
 ```ts
 // import the campaign interfaces from the sdk
-import type { IFetchCampaignsResponse } from 'termii-nodejs-client';
+import type { IFetchCampaignsResponse } from 'termii/node';
 
 const response = await termii.message.fetchCampaigns()
 
@@ -346,7 +346,7 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the campaign interfaces from the sdk
-import type { fetchCampaignHistoryResponseData } from 'termii-nodejs-client';
+import type { fetchCampaignHistoryResponseData } from 'termii/node';
 
 const response = await termii.message.fetchCampaigns('campaign_id')
 
@@ -361,7 +361,7 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the campaign interfaces from the sdk
-import type { ISendCampaign, ISendCampaignResponse } from 'termii-nodejs-client';
+import type { ISendCampaign, ISendCampaignResponse } from 'termii/node';
 
 const payload: ISendCampaign = {
   api_key: "Your API KEY",
@@ -388,4 +388,4 @@ Find more details about the parameters and response for the above method [here](
 
 ## License
 
-[MIT](https://github.com/peoray/termii-nodejs-client/blob/main/LICENSE)
+[MIT](https://github.com/peoray/termii/node/blob/main/LICENSE)

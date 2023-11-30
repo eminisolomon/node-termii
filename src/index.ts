@@ -1,2 +1,2 @@
 export * from './termii'
-export * from './types'
+export * from './interfaces'

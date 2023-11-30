@@ -3,7 +3,7 @@ import {
   ISendBulkMessage,
   ISendMessage,
   ISendMessageResponse,
-} from '../../../types'
+} from '../../../interfaces'
 
 const message = new Message('api-key')
 

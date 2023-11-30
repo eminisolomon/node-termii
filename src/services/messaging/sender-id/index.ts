@@ -3,7 +3,7 @@ import {
   ISenderIDResponse,
   IRequestSenderID,
   IRequestSenderIDResponse,
-} from '../../../types'
+} from '../../../interfaces'
 import { IAxiosStruct, handleErrors } from '../../../utils'
 
 /**

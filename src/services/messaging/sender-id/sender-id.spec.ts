@@ -3,7 +3,7 @@ import {
   ISenderIDResponse,
   IRequestSenderID,
   IRequestSenderIDResponse,
-} from '../../../types'
+} from '../../../interfaces'
 
 const message = new SenderId('api-key')
 
