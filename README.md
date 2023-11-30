@@ -1,117 +1,391 @@
-# termii-node
+# Termii Node Client
 
-> Template to kickstart creating a Node.js module using TypeScript and VSCode
+![npm (scoped)](https://img.shields.io/npm/v/termii-nodejs-client?color=%23FF7B37&style=flat-square) ![npm](https://img.shields.io/npm/dm/termii-nodejs-client?style=flat-square) ![Twitter Follow](https://img.shields.io/twitter/follow/peoray_?style=social)
 
-Inspired by [node-module-boilerplate](https://github.com/sindresorhus/node-module-boilerplate)
+Nodejs SDK for [Termii](https://termii.com) messaging platform written in typescript
 
-## Features
+## Table of content
 
-- [Semantic Release](https://github.com/semantic-release/semantic-release)
-- [Issue Templates](https://github.com/ryansonshine/termii-node/tree/main/.github/ISSUE_TEMPLATE)
-- [GitHub Actions](https://github.com/ryansonshine/termii-node/tree/main/.github/workflows)
-- [Codecov](https://about.codecov.io/)
-- [VSCode Launch Configurations](https://github.com/ryansonshine/termii-node/blob/main/.vscode/launch.json)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Husky](https://github.com/typicode/husky)
-- [Lint Staged](https://github.com/okonet/lint-staged)
-- [Commitizen](https://github.com/search?q=commitizen)
-- [Jest](https://jestjs.io/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
+- [Prerequisites](#prerequisites)
+- [Getting started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Available Services exposed by the SDK](#available-services-exposed-by-the-sdk)
+  - [Sender ID](#sender-id)
+    - [Fetch Sender ID](#fetch-sender-id)
+    - [Create Sender ID](#create-sender-id)
+  - [Messaging](#messaging)
+    - [Send Message](#send-message)
+    - [Send Bulk Message](#send-bulk-message)
+  - [Number](#number)
+    - [Send Message with Number](#send-message-with-number)
+- [License](#license)
 
-## Getting started
+## Prerequisites
 
-### Set up your repository
+Node v16 and higher is required. To make sure you have them available on your machine, try running the following command.
 
-**Click the "Use this template" button.**
-
-Alternatively, create a new directory and then run:
-
-```bash
-curl -fsSL https://github.com/ryansonshine/termii-node/archive/main.tar.gz | tar -xz --strip-components=1
+```sh
+ node -v
 ```
 
-Replace `FULL_NAME`, `GITHUB_USER`, and `REPO_NAME` in the script below with your own details to personalize your new package:
+## Getting Started
 
-```bash
-FULL_NAME="John Smith"
-GITHUB_USER="johnsmith"
-REPO_NAME="my-cool-package"
-sed -i.mybak "s/\([\/\"]\)(ryansonshine)/$GITHUB_USER/g; s/termii-node\|termii-node/$REPO_NAME/g; s/Solomon Olatunji/$FULL_NAME/g" package.json package-lock.json README.md
-rm *.mybak
-```
+To get started with this SDK, create an account on [Termii](https://accounts.termii.com/#/register) if you haven't already.
+You can then retrieve your API keys from your Termii dashboard.
 
-### Add NPM Token
+## Installation
 
-Add your npm token to your GitHub repository secrets as `NPM_TOKEN`.
+This SDK can be installed with npm or yarn or pnpm.
 
-### Add Codecov integration
-
-Enable the Codecov GitHub App [here](https://github.com/apps/codecov).
-
-**Remove everything from here and above**
-
----
-
-# termii-node
-
-[![npm package][npm-img]][npm-url]
-[![Build Status][build-img]][build-url]
-[![Downloads][downloads-img]][downloads-url]
-[![Issues][issues-img]][issues-url]
-[![Code Coverage][codecov-img]][codecov-url]
-[![Commitizen Friendly][commitizen-img]][commitizen-url]
-[![Semantic Release][semantic-release-img]][semantic-release-url]
-
-> My awesome module
-
-## Install
-
-```bash
-npm install termii-node
+```sh
+# using npm
+npm install termii-nodejs-client
+# using yarn
+yarn install termii-nodejs-client
+# using pnpm
+pnpm add termii-nodejs-client
 ```
 
 ## Usage
 
-```ts
-import { myPackage } from 'termii-node';
+Import and Initialize the library
 
-myPackage('hello');
-//=> 'hello from my package'
+```ts
+// use modules
+import { Termii } from 'termii-nodejs-client';
+// use cjs
+const { Termii } = require('termii-nodejs-client')
+
+const termii = new Termii('YOUR_API_KEY');
 ```
 
-## API
+Instantiate the Termii class
 
-### myPackage(input, options?)
+```ts
+const termii = new Termii('YOUR_API_KEY');
+```
 
-#### input
+> **Warning**
+Be sure to keep your API Credentials securely in environment variables.
 
-Type: `string`
+## Available Services exposed by the SDK
 
-Lorem ipsum.
+### Sender ID API
 
-#### options
+A Sender ID is the name or number that identifies the sender of an SMS message.
 
-Type: `object`
+#### Fetch Sender ID
 
-##### postfix
+```ts
+// import the sender id response interface from the sdk
+import { type ISenderIDResponse } from 'termii-nodejs-client';
 
-Type: `string`
-Default: `rainbows`
+// returns the first 15 sender ids
+const senderIds = await termii.message.fetchSenderIDs()
 
-Lorem ipsum.
+// to get the next page of sender ids 
+const senderIds = await termii.message.fetchSenderIDs(2)
+console.log(senderIds) // ISenderIDResponse
+```
 
-[build-img]:https://github.com/ryansonshine/termii-node/actions/workflows/release.yml/badge.svg
-[build-url]:https://github.com/ryansonshine/termii-node/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dt/termii-node
-[downloads-url]:https://www.npmtrends.com/termii-node
-[npm-img]:https://img.shields.io/npm/v/termii-node
-[npm-url]:https://www.npmjs.com/package/termii-node
-[issues-img]:https://img.shields.io/github/issues/ryansonshine/termii-node
-[issues-url]:https://github.com/ryansonshine/termii-node/issues
-[codecov-img]:https://codecov.io/gh/ryansonshine/termii-node/branch/main/graph/badge.svg
-[codecov-url]:https://codecov.io/gh/ryansonshine/termii-node
-[semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-[semantic-release-url]:https://github.com/semantic-release/semantic-release
-[commitizen-img]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[commitizen-url]:http://commitizen.github.io/cz-cli/
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/sender-id#fetch-sender-id)
+
+#### Create Sender ID
+
+```ts
+// import the request sender id interfaces from the sdk
+import type { IRequestSenderID, IRequestSenderIDResponse } from 'termii-nodejs-client';
+
+const payload: IRequestSenderID = {
+  sender_id: 'acme',
+  usecase: 'Testing! Working!! This is it!!!',
+  company: 'Metalabs',
+}
+
+const response = await termii.message.requestSenderID(payload)
+console.log(response) // IRequestSenderIDResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/sender-id#request-sender-id)
+
+### Messaging API
+
+This API allows businesses send text messages to their customers across different messaging channels.
+
+#### Send Message
+
+```ts
+// import the message interfaces from the sdk
+import type { ISendMessage, ISendMessageResponse } from 'termii-nodejs-client';
+
+const payload: ISendMessage = {
+  to: "2347880234567",
+  from: "talert",
+  sms: "Hi there, testing Termii",
+  type: "plain",
+  channel: "generic",
+  api_key: "Your API Key",
+  media: {
+    url: "https://media.example.com/file",
+    caption: "your media file"
+  }    
+}
+
+const response = await termii.message.sendMessage(payload)
+console.log(response) // ISendMessageResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/messaging-api#send-message)
+
+#### Send Bulk Message
+
+```ts
+// import the message interfaces from the sdk
+import type { ISendBulkMessage, ISendBulkMessageResponse } from 'termii-nodejs-client';
+
+const payload: ISendBulkMessage = {
+  to: ["23490555546", "23423490126999","23490555546"],
+  from: "talert",
+  sms: "Hi there, testing Termii",
+  type: "plain",
+  channel: "generic"
+}
+
+const response = await termii.message.sendBulkMessage(payload)
+console.log(response) // ISendBulkMessageResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/messaging-api#send-bulk-message)
+
+### Number API
+
+This allows businesses send messages to customers using Termii's auto-generated messaging numbers that adapt to customers location.
+
+#### Send Message with Number
+
+```ts
+// import the number interfaces from the sdk
+import type { ISendMessageWithNumber, ISendMessageWithNumberResponse } from 'termii-nodejs-client';
+
+const payload: ISendMessage = {
+  to: "23490555546",
+  sms: "Hi there, testing Termii"
+}
+
+const response = await termii.message.sendMessageWithNumber(payload)
+console.log(response) // ISendMessageWithNumberResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/number#send-message)
+
+### Templates API
+
+This helps businesses set a template for the one-time-passwords (pins) sent to their customers via whatsapp or sms.
+
+#### Device Template (Send Message with Template)
+
+```ts
+// import the template interfaces from the sdk
+import type { IDeviceTemplate, IDeviceTemplateResponse } from 'termii-nodejs-client';
+
+const payload: IDeviceTemplate = {
+  phone_number: '+1234567890',
+  device_id: 'device123',
+  template_id: 'template456',
+  data: {
+    product_name: 'Dummy Product',
+    otp: 123456,
+    expiry_time: '2023-11-16T12:00:00Z',
+  },
+}
+
+const response = await termii.message.sendMessageWithTemplate(payload)
+console.log(response) // IDeviceTemplateResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/templates#device-template)
+
+### Phonebooks
+
+Create, view & manage phonebooks using these APIs. Each phonebook can be identified by a unique ID, which makes it easier to edit or delete a phonebook.
+
+#### Fetch Phonebooks
+
+```ts
+// import the phonebook interfaces from the sdk
+import type { IFetchPhonebooksResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchPhonebooks()
+
+// to fetch another page - pass the page number to the method
+const response = await termii.message.fetchPhonebooks(2)
+console.log(response) // IFetchPhonebooksResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-phonebooks)
+
+#### Create Phonebook
+
+```ts
+// import the phonebook interfaces from the sdk
+import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
+
+const payload: IPhonebook = {
+  phonebook_name: 'Test',
+  description: 'Phonebook for test',
+}
+
+const response = await termii.message.createPhonebook(payload)
+console.log(response) // IPhonebookResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#create--a-phonebook)
+
+#### Update Phonebook
+
+```ts
+// import the phonebook interfaces from the sdk
+import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
+
+const payload: IPhonebook = {
+  phonebook_name: 'Update testTest',
+  description: 'Updated Phonebook for test',
+}
+
+const response = await termii.message.updatePhonebook('phonebook_id', payload)
+console.log(response) // IPhonebookResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#update-phonebook)
+
+#### Delete Phonebook
+
+```ts
+// import the phonebook interfaces from the sdk
+import type { IPhonebookResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.deletePhonebook('phonebook_id')
+console.log(response) // IPhonebookResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#delete-phonebook)
+
+### Contacts
+
+Contacts API allows you manage (i.e. edit, update, & delete) contacts in your phonebook.
+
+#### Fetch contacts by phonebook ID
+
+```ts
+// import the contact interfaces from the sdk
+import type { IFetchContactsResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchContacts('phonebook_id')
+
+// to fetch another page - pass the page number to the method after the phonebook ID
+const response = await termii.message.fetchContacts('phonebook_id', 2)
+console.log(response) // IFetchContactsResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/contacts#fetch-contacts-by-phonebook-id)
+
+#### Add single contacts to phonebook
+
+```ts
+// import the contact interfaces from the sdk
+import type { ICreateContact, ICreateContactResponse } from 'termii-nodejs-client';
+
+const payload: ICreateContact = {
+  phone_number: '8123696237',
+  email_address: 'test@gmail.com',
+  first_name: 'test',
+  last_name: 'contact',
+  company: 'Termii',
+  country_code: '234',
+}
+
+const response = await termii.message.createContact('phonebook_id', payload)
+console.log(response) // ICreateContactResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/contacts#add-single-contacts-to-phonebook)
+
+#### Delete contact
+
+```ts
+// import the contact interfaces from the sdk
+import type { IDeleteContactResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.deleteContact('contact_id')
+console.log(response) // IDeleteContactResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/contacts#delete-phonebook)
+
+### Campaign
+
+Using the campaign APIs, you can view, manage and send a campaign to a phonebook.
+
+#### Fetch campaigns
+
+```ts
+// import the campaign interfaces from the sdk
+import type { IFetchCampaignsResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchCampaigns()
+
+// to fetch another page - pass the page number to the method
+const response = await termii.message.fetchCampaigns(2)
+console.log(response) // IFetchCampaignsResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/campaign#fetch-campaigns)
+
+#### Fetch campaign history
+
+```ts
+// import the campaign interfaces from the sdk
+import type { fetchCampaignHistoryResponseData } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchCampaigns('campaign_id')
+
+// to fetch another page - pass the page number to the method after campaign ID
+const response = await termii.message.fetchCampaigns('campaign_id', 2)
+console.log(response) // fetchCampaignHistoryResponseData
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/campaign#fetch-campaign-history)
+
+#### Send a campaign
+
+```ts
+// import the campaign interfaces from the sdk
+import type { ISendCampaign, ISendCampaignResponse } from 'termii-nodejs-client';
+
+const payload: ISendCampaign = {
+  api_key: "Your API KEY",
+  country_code: "234",
+  sender_id: "Termii",
+  message: "Welcome to Termii.",
+  channel: "generic",
+  message_type: "Plain",
+  phonebook_id: "2d9f4a02-85b8-45e5-9f5b-30f93ef472e2",
+  delimiter: ",",
+  remove_duplicate: "yes",
+  campaign_type: "personalized",
+  schedule_time: "30-06-2021 6:00",
+  schedule_sms_status: "scheduled"
+}
+
+const response = await termii.message.sendCampaign(payload)
+
+console.log(response) // ISendCampaignResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/campaign#send-a-campaign)
+
+
+## License
+
+[MIT](https://github.com/peoray/termii-nodejs-client/blob/main/LICENSE)
