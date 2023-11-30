@@ -1,5 +1,5 @@
 {
-  "name": "termii-nodesdk",
+  "name": "@termii/node",
   "version": "0.3.0",
   "description": "Nodejs SDK wrapper for Termii API written with Typescript support",
   "author": "Solomon Olatunji",
