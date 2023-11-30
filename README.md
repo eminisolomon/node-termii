@@ -1,6 +1,9 @@
 # Termii Node Library
 
-![npm (scoped)](https://img.shields.io/npm/v/@termii/node?color=%23FF7B37&style=flat-square) ![npm](https://img.shields.io/npm/dm/@termii/node?style=flat-square) ![Twitter Follow](https://img.shields.io/twitter/follow/eminisolomon?style=social)
+[![Made in Nigeria](https://img.shields.io/badge/made%20in-nigeria-008751.svg?style=flat-square)](https://github.com/acekyd/made-in-nigeria)
+![npm (scoped)](https://img.shields.io/npm/v/@termii/node?color=%23FF7B37&style=flat-square)
+![npm](https://img.shields.io/npm/dm/@termii/node?style=flat-square)
+![Twitter Follow](https://img.shields.io/twitter/follow/eminisolomon?style=social)
 
 Nodejs SDK for [Termii](https://termii.com) messaging platform written in typescript
 
